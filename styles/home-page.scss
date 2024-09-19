@@ -1,0 +1,22 @@
+.view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container, .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .box {
+    gap: 10px;
+  }
+  

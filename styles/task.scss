@@ -1,0 +1,70 @@
+.task {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: transparent;
+  border: 1px dashed #d7dde9;
+  border-radius: 8px;
+  transition: background-color 0.3s, border 0.3s;
+
+  &:hover {
+    border: 1px solid transparent;
+    background-color: #f7f9fd;
+    cursor: pointer;
+  }
+
+  .start {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .icon-trash {
+    width: 20px;
+    color: #b0bbd1;
+    cursor: pointer;
+  }
+
+  .name-task {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+
+  .custom-checkbox {
+    width: 24px;
+    height: 24px;
+    appearance: none;
+    border: 1px solid #b0bbd1;
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, border 0.3s;
+
+    &:checked {
+      background-color: #a0dcf6;
+      border-color: #0796d3;
+
+      &::before {
+        content: "✓";
+        font-size: 14px;
+        color: #0796d3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  .custom-checkbox:checked + .name-task {
+    text-decoration: line-through;
+    color: #0000008A;
+  }
+}
