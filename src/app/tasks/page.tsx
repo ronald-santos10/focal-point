@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Logo } from "@/components/ui/logo";
 import "../../../styles/tasks-page.scss";
@@ -9,7 +9,11 @@ import { CreateTaskModal } from "@/components/home-task/create-task-modal";
 
 export default function Page() {
   const [showCreateTask, setShowCreatetask] = useState(false);
-  
+
+  const handleCreateTask = () => {
+    console.log("criando task");
+  };
+
   return (
     <div className="page">
       <div className="header">
@@ -28,9 +32,18 @@ export default function Page() {
             <span className="date">Tarefas finalizadas</span>
             <Task label="Levar o lixo para fora" />
           </div>
-          <Button label="Adicionar nova tarefa" onClick={() => setShowCreatetask(true)}/>
+          <Button
+            label="Adicionar nova tarefa"
+            onClick={() => setShowCreatetask(true)}
+            color="primary"
+          />
         </div>
-        {showCreateTask && <CreateTaskModal closeAction={() => setShowCreatetask(false)} />}
+        {showCreateTask && (
+          <CreateTaskModal
+            closeAction={() => setShowCreatetask(false)}
+            createAction={handleCreateTask}
+          />
+        )}
       </div>
     </div>
   );

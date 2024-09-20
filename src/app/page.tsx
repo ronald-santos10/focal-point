@@ -12,7 +12,7 @@ export default function Home() {
         <div className="box">
           <Input placeholder="Digite seu nome..." />
         <Link href={"/tasks"}>
-          <Button label="Entrar" />
+          <Button label="Entrar" color="primary"/>
         </Link>
         </div>
       </div>

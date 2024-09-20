@@ -1,15 +1,19 @@
 .container-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   width: 450px;
   height: 286px;
-  position: fixed;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 32px;
   background-color: white;
-  box-shadow: 0px 24px 48px -12px #1018282e;
+  box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
   border-radius: 16px;
-  justify-content: center;
+  transition: all 0.3s;
 
   @media (max-width: 768px) {
     justify-content: start;
@@ -20,21 +24,12 @@
     height: 100vh;
   }
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .description {
+    color: #0000008a;
   }
 
   .buttons {
     display: flex;
-    flex-direction: row;
     gap: 16px;
-
-    @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
   }
 }
