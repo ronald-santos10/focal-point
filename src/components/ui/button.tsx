@@ -4,5 +4,5 @@ type Props = {
 };
 
 export const Button = ({ label, onClick }: Props) => {
-  return <button onClick={onClick}>{label}</button>;
+  return <button onClick={onClick} className="button">{label}</button>;
 };
