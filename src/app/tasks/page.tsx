@@ -4,14 +4,25 @@ import { Logo } from "@/components/ui/logo";
 import "../../../styles/tasks-page.scss";
 import { Button } from "@/components/ui/button";
 import { Task } from "@/components/ui/task";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CreateTaskModal } from "@/components/home-task/create-task-modal";
 
 export default function Page() {
   const [showCreateTask, setShowCreatetask] = useState(false);
+  const [tasks, setTasks] = useState<string[]>([]);
 
-  const handleCreateTask = () => {
-    console.log("criando task");
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  const handleCreateTask = (title: string) => {
+    const updatedTasks = [...tasks, title];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    console.log("Criando task:", title);
   };
 
   return (
@@ -26,9 +37,9 @@ export default function Page() {
         <div className="container">
           <div className="box-tasks">
             <span className="date">Suas tarefas de hoje</span>
-            <Task label="Lavar as mãos" />
-            <Task label="Fazer um bolo" />
-            <Task label="Lavar a louça" />
+            {tasks.map((task, index) => (
+              <Task key={index} label={task} />
+            ))}
             <span className="date">Tarefas finalizadas</span>
             <Task label="Levar o lixo para fora" />
           </div>
