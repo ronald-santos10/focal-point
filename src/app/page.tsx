@@ -9,12 +9,9 @@ export default function Home() {
     <div className="view">
       <div className="container">
         <Logo size={200}/>
-        <div className="box">
-          <Input placeholder="Digite seu nome..." />
         <Link href={"/tasks"}>
           <Button label="Entrar" color="primary"/>
         </Link>
-        </div>
       </div>
     </div>
   );

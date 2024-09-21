@@ -1,26 +1,14 @@
 .view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container, .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
-  }
-  
-  .container {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .box {
-    gap: 10px;
-  }
-  
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}

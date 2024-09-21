@@ -8,18 +8,21 @@
   }
 }
 
-.page-container,
-.container,
-.box-tasks {
+.page-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0;
 }
 
-.page-container,
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 0;
+  gap: 24px;
 }
 
 .header {
@@ -54,22 +57,21 @@
   font-size: 16px;
 }
 
-.container,
 .box-tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 450px;
   gap: 24px;
-
-  @media (max-width: 768px) {
-    width: 272px;
-    gap: 8px;
-  }
-}
-
-.box-tasks {
   padding: 32px;
   border: 1px solid #eaecf0;
   border-radius: 16px;
   transition: all 0.3s;
+
+  @media (max-width: 768px) {
+    width: 272px;
+  }
 }
 
 .task-width {
