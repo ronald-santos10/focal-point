@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import "../../../styles/task.scss";
@@ -23,21 +23,27 @@ export const Task = ({ label, onDelete, onToggle, completed }: Props) => {
   return (
     <div className="task">
       <div className="start">
-        <input 
-          type="checkbox" 
-          id={label} 
-          className="custom-checkbox" 
-          checked={completed} 
-          onChange={onToggle} 
+        <input
+          type="checkbox"
+          id={label}
+          className="custom-checkbox"
+          checked={completed}
+          onChange={onToggle}
         />
-        <span className={`name-task ${completed ? "completed" : ""}`}>{label}</span>
+        <span className={`name-task ${completed ? "completed" : ""}`}>
+          {label}
+        </span>
       </div>
       <IconTrash size={24} onClick={() => setShowTrashtask(true)} />
       {showTrashTask && (
-        <TrashTaskModal 
-          closeAction={() => setShowTrashtask(false)} 
-          trashAction={handleDeleteTask}
-        />
+        <>
+          <div className="backdrop active">
+            <TrashTaskModal
+              closeAction={() => setShowTrashtask(false)}
+              trashAction={handleDeleteTask}
+            />
+          </div>
+        </>
       )}
     </div>
   );

@@ -89,10 +89,16 @@ export default function Page() {
           />
         </div>
         {showCreateTask && (
-          <CreateTaskModal
-            closeAction={() => setShowCreatetask(false)}
-            createAction={handleCreateTask}
-          />
+          <>
+            <div
+              className="backdrop active"
+              onClick={() => setShowCreatetask(false)}
+            />
+            <CreateTaskModal
+              closeAction={() => setShowCreatetask(false)}
+              createAction={handleCreateTask}
+            />
+          </>
         )}
       </div>
     </div>
