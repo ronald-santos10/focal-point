@@ -71,3 +71,15 @@
   border-radius: 16px;
   transition: all 0.3s;
 }
+
+.task-width {
+  display: flex;
+  flex-direction: column;
+  width: 386px;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    width: 208px;
+    gap: 8px;
+  }
+}

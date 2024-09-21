@@ -9,7 +9,9 @@ import { CreateTaskModal } from "@/components/home-task/create-task-modal";
 
 export default function Page() {
   const [showCreateTask, setShowCreatetask] = useState(false);
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<{ title: string; completed: boolean }[]>(
+    []
+  );
 
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
@@ -19,10 +21,25 @@ export default function Page() {
   }, []);
 
   const handleCreateTask = (title: string) => {
-    const updatedTasks = [...tasks, title];
+    const newTask = { title, completed: false };
+    const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     console.log("Criando task:", title);
+  };
+
+  const handleTrashTask = (taskTitle: string) => {
+    const updatedTasks = tasks.filter((task) => task.title !== taskTitle);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  };
+
+  const handleToggleTask = (taskTitle: string) => {
+    const updatedTasks = tasks.map((task) =>
+      task.title === taskTitle ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   return (
@@ -37,11 +54,33 @@ export default function Page() {
         <div className="container">
           <div className="box-tasks">
             <span className="date">Suas tarefas de hoje</span>
-            {tasks.map((task, index) => (
-              <Task key={index} label={task} />
-            ))}
+            <div className="task-width">
+              {tasks
+                .filter((task) => !task.completed)
+                .map((task, index) => (
+                  <Task
+                    key={index}
+                    label={task.title}
+                    onDelete={handleTrashTask}
+                    onToggle={() => handleToggleTask(task.title)}
+                    completed={task.completed}
+                  />
+                ))}
+            </div>
             <span className="date">Tarefas finalizadas</span>
-            <Task label="Levar o lixo para fora" />
+            <div className="task-width">
+              {tasks
+                .filter((task) => task.completed)
+                .map((task, index) => (
+                  <Task
+                    key={index}
+                    label={task.title}
+                    onDelete={handleTrashTask}
+                    onToggle={() => handleToggleTask(task.title)}
+                    completed={task.completed}
+                  />
+                ))}
+            </div>
           </div>
           <Button
             label="Adicionar nova tarefa"

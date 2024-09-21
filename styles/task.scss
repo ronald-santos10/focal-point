@@ -33,6 +33,13 @@
     font-weight: 400;
     color: black;
     transition: color 0.3s, text-decoration 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 768px) {
+      width: 112px;
+    }
   }
 
   .custom-checkbox {
@@ -65,6 +72,6 @@
 
   .custom-checkbox:checked + .name-task {
     text-decoration: line-through;
-    color: #0000008A;
+    color: #0000008a;
   }
 }

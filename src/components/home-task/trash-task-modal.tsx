@@ -1,6 +1,5 @@
 import "../../../styles/trash-task-modal.scss";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 
 type Props = {
   closeAction: () => void;
